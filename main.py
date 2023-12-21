@@ -1,13 +1,9 @@
-#main
-
 import requests
 
 def get_weather(city, country):
-    city = city_entry.get()
-    country = country_entry.get()
-    api_key = "#USE YOUR OWN API KEY!!"
+    api_key = "#PUT YOUR OWN KEY"
     base_url = "https://api.openweathermap.org/data/2.5/weather"
-    params = {"q": city, "appid":api_key, "units":"metric"}
+    params = {"q": f"{city},{country}", "appid":api_key, "units":"metric"}
 
     response = requests.get(base_url, params=params)
     weather_data = response.json()
@@ -20,7 +16,9 @@ def get_weather(city, country):
 
     return f"The temperature in {city}, {country} is {temperature}°C with {description}"
 
-city = ("Enter City:")
-country = ("Enter country:")
+city = input("Enter the city:")
+country = input("Enter the country:")
 weather_info = get_weather(city, country)
+
 print(weather_info)
+
